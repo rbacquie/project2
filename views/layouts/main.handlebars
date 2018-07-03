@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<title></title>
+
+	<!-- CSS  -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"
+	 media="screen,projection" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="../../htmlstuff/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+	{{{ body }}}
+</body>
+<footer class="page-footer deep-orange accent-3">
+
+	<div class="footer-copyright">
+		<div class="container">
+			<a class="orange-text text-lighten-3" href="http://materializecss.com">----</a>
+		</div>
+	</div>
+</footer>
+<!--  Scripts-->
+<script>
+
+</script>
+<script src="../../htmlstuff/JavaScript/materialize.js"></script>
+<script src="../../htmlstuff/JavaScript/init.js"></script>
+<script src="../../htmlstuff/JavaScript/code.js"></script>
+<script src="../../htmlstuff/JavaScript/connection.js"></script>
+
+</body>
+<script type="text/javascript">
+
+	$(function () {
+		document.addEventListener('DOMContentLoaded', function () {
+			var elems = document.querySelectorAll('.dropdown-trigger');
+			var instances = M.Dropdown.init(elems, options);
+		});
+		// Or with jQuery
+		$('.dropdown-trigger').dropdown();
+	});
+	// coding for form and buttons
+	// activates submit button and stores values in user input variable
+	$(document).ready(function () {
+		$("#dropdown1 a").on('click', function (e) {
+			e.preventDefault();
+			console.log("kek 3");
+			// store values below
+			/*var userInfo = {
+				company: $("#companyName").val().trim(),
+				foodtype: $("#dropdown1").val().trim(),
+				name: $("name").val().trim(),
+				phone: $("phone").val().trim(),
+			}
+			var userLocation = {
+				location: $("street-location").val().trim(),
+				city: $("city").val().trim(),
+				state: $("state").val().trim(),
+				zipcode: $("zipcode").val().trim(),
+			}
+			var userLogin = {
+				email: $("#email").val().trim(),
+				password: $("#password").val().trim()
+			}
+			geocode(e);*/
+			url = "/search/" + $(this).data("value")
+
+			var loc = window.location;
+			window.location = loc.protocol + '//' + loc.host + url;
+		})
+		// Geolocation for current position using HTML 5 or GPS enabled device
+		// var x = $('#formatted-address');
+		// function getLocation() {
+		//     if (navigator.geolocation) {
+		//         navigator.geolocation.getCurrentPosition(showPosition);
+		//     } else { 
+		//         x.append("Geolocation is not supported by this browser.");
+		//     }
+		// }
+		// function showPosition(position) {
+		//     var current = position.coords.latitude + " " + position.coords.longitude;
+		// } 
+		// Google Geo Location code
+		var location = userLocation;
+		function geocode(e) {
+			//prevent actual submit
+			e.preventDefault();
+			// this gets the address 
+			axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
+				params: {
+					address: location,
+					key: 'AIzaSyBPF4By_TqAsRtGxsjnHgATemGXWVeDDCo'
+				}
+			})
+				.then(function (responce) {
+					//log responce
+					//  console.log(responce);
+					// format address online 
+					// console.log(responce.data.results[0].formatted_address);
+					var formattedAddress = responce.data.results[0].formatted_address;
+					//all of the address componets
+					var addressComponents = responce.data.results[0].address_components;
+					// store all the comonents in the variable
+					var addressComponentsOutputs = "";
+					//loop throught the geo location map components 
+					for (var i = 0; i < addressComponents.length; i++) {
+
+						// after every loop it will add the new component
+						addressComponentsOutputs += addressComponents[i].types[0] + addressComponents[i].long_name;
+					};
+					// Geometry
+					var lat = responce.data.results[0].geometry.location.lat;
+					var lng = responce.data.results[0].geometry.location.lng;
+					// mapping coords to store in data base
+					userGeoLocation = {
+						latitude: lat,
+						longitude: lng
+					}
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		}
+	});
+
+</script>
+
+</body>
+
+</html>

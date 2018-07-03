@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Starter Template - Materialize</title>
+    <!-- axios scripting for api request made easier -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Compiled and materialize and jquery JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </script>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="https://materializecss.com/css/ghpages-materialize.css" />
+    <!--Import Google Icon Font-->
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body class="orange lighten-5">
+    <!-- NAV BAR -->
+    <nav class="deep-orange accent-3" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Food Spot
+                <i class="material-icons">restaurant</i>
+
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/home">Home |</a>
+                </li>
+                <li>
+                    <a href="/login">Log-In |</a>
+                </li>
+                <!-- <div class="row">
+                    <a href="index.html">Home</a>
+                </div> -->
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="section no-pad-bot deep-orange accent-2" id="index-banner">
+    </div>
+    <!-- BODY -->
+    <div class="container orange lighten-5">
+        <div class="section orange lighten-5">
+            <!-- this is the form section -->
+            <form id="signup" class="col s12">
+                <br>
+                <!-- address check -->
+                <div class='card-block' id="formatted-address"></div>
+                <br>
+                <!-- company name -->
+
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="companyName" type="text" class="validate">
+                        <label for="companyName">Company Name</label>
+                    </div>
+                    <!-- Materialize drop down buttons 2 of them -->
+                    <div class="container">
+                        <div class="col s4">
+                            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+                            <!-- Dropdown Menu for Type of Food -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li>
+                                    <a value="hotdog">Hot Dog Stand</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a value="truck">Food Truck</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a value="pizza">Pizza Place</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a value="icecream">
+                                        <i class="material-icons">cloud</i>Ice Cream Stand</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Second Button for stationary or none stationary -->
+                        <div class="col s4">
+                            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Drop Me!</a>
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown2' class='dropdown-content'>
+                                <li>
+                                    <a value="steady">Steady Location</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a value="mobile">Mobile Locations</a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li>
+                                    <a value="event">Events Only</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Input name, phone number, and address -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="phone" type="text" class="validate">
+                        <label for="phone">Phone Number</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="street-location" type="text" class="validate">
+                        <label for="street-location">Street Location</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="city" type="text" class="validate">
+                        <label for="city">City</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="state" type="text" class="validate">
+                        <label for="state">State</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="zipcode" type="text" class="validate">
+                        <label for="zipcode">Zip Code</label>
+                    </div>
+                </div>
+                <!-- input email and password for asscessing the account -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right"></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <!-- submit button once everything is filled in -->
+                <div class="center">
+                    <button class="btn" type="submit" name="action" id="submitbutton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <footer class="page-footer deep-orange accent-3">
+        <div class="footer-copyright">
+            <div class="container">
+                ------
+                <a class="orange-text text-lighten-3" href="http://materializecss.com">----</a>
+            </div>
+        </div>
+    </footer>
+    <!--  Scripts-->
+    <script src="javaScript/materialize.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!-- NAV BAR -->
+<nav class="deep-orange accent-3" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">Food Spot</a>
+    <ul class="right hide-on-med-and-down">
+      <li>
+        <a href="login.html">Log-In |</a>
+      </li>
+      <li>
+        <a href="signup.html">Sign-up! |</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<!-- Header -->
+<div class="section no-pad-bot deep-orange accent-2" id="index-banner">
+  <div class="container">
+    <br>
+    <br>
+    <h1 class="header center white-text">Food Is One Click Away!</h1>
+    <div class="container">
+      {{!--
+      <form class="form-inline">
+        <input id="userSearch" name="userInput" placeholder="Search" aria-label="Search">
+        <button class="btn-large" id="test" type="submit">Search</button>
+      </form> --}}
+      <div class="col s4 center">
+        <a class='dropdown-trigger  btn center' href='#' data-target='dropdown1'>What do you want?</a>
+        <!-- Dropdown Menu for Type of Food -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li>
+            <a data-value="hotdogs">
+              <i class="material-icons">hot_tub</i>hotdogs</a>
+          </li>
+          <li class="divider" tabindex="-1"></li>
+          <li>
+            <a data-value="trucks">
+              <i class="material-icons">local_shipping</i>trucks
+          </li>
+          <li class="divider" tabindex="-1"></li>
+          <li>
+            <a data-value="pizza">
+              <i class="material-icons">local_pizza</i>pizza</a>
+          </li>
+          <li class="divider" tabindex="-1"></li>
+          <li>
+            <a data-value="icecream">
+              <i class="material-icons">cloud</i>icecream</a>
+          </li>
+        </ul>
+        {{!--
+        <div id="ex1" class="modal">
+          <p>Truck's Location</p>
+          <div id="map"></div>
+
+        </div> --}}
+
+        <!-- Link to open the modal -->
+        {{!--
+        <button type="button" class="btn btn-primary mx-auto" id="locationButton" style="width: 120px;">
+          <a href="#ex1" rel="modal:open" id="text1">Show Location</a>
+        </button> --}}
+
+      </div>
+    </div>
+
+    <!-- Second Button for stationary or none stationary -->
+    {{!--
+    <div class="col s4">
+      <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Drop Me!</a>
+      <!-- Dropdown Structure -->
+      <ul id='dropdown2' class='dropdown-content'>
+        <li>
+          <a value="steady">Steady Location</a>
+        </li>
+        <li class="divider" tabindex="-1"></li>
+        <li>
+          <a value="mobile">Mobile Locations</a>
+        </li>
+        <li class="divider" tabindex="-1"></li>
+        <li>
+          <a value="event">Events Only</a>
+        </li>
+      </ul>
+    </div>
+  </div> --}} {{!--
+  <div class="row center">
+    <form class="form-inline">
+      <input id="userSearch" name="userInput" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn-large" id="test" type="submit">Search</button>
+    </form>
+  </div> --}}
+  <br>
+  <br>
+  <br>
+</div>
+</div>
+<!-- BODY -->
+<div class="orange lighten-5">
+  <div class="container orange lighten-5">
+    <div class="section orange lighten-5">
+      <!--   Icon Section   -->
+      <div class="row center">
+        <h1>Trucks around you</h1>
+        {{!--
+        <h2>All trucks</h2> --}}
+        <div class="jumbotron center">
+          <ul>
+            {{#each carts}}
+            <p>Name: {{cartname}}</p>
+            <p>Category type: {{category_type}}</p>
+            <p>Street: {{street}}</p>
+            <p>City: {{city}}</p>
+            <p>State: {{state}}</p>
+            <p>Zipcode: {{zipcode}}</p>
+
+            <hr> {{/each}}
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m6">
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="center">
+    <a class='dropdown-trigger btn center' href='/search'>Search Again</a>
+  </div>
+  <br>
+</div>
+{{!--
+<ul>
+  {{#each cats}} {{#if sleepy}} {{> cats/cat-block sleep=false}} {{/if}} {{/each}}
+</ul>
+<h2>Add a Cat</h2>
+<form class="create-form">
+  <div class="form-group">
+    <label for="ca">Cat Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+  <div class="form-group">
+    <label for="slee">Sleepy?</label>
+    <br>
+    <input type="radio" name="sleepy" value="1" checked> Sleepy!
+    <br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div>
+  <button type="submit">Add Cat</button>
+</form> --}}

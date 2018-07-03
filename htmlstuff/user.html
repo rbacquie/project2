@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Starter Template - Materialize</title>
+    <!-- axios scripting for api request made easier -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Compiled and materialize and jquery JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </script>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="https://materializecss.com/css/ghpages-materialize.css" />
+    <!--Import Google Icon Font-->
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+<body class="orange lighten-5">
+    <!-- NAV BAR -->
+    <nav class="deep-orange accent-3" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="/home">Home |</a>
+                </li>
+                <li>
+                    <a href="/login">Log-In |</a>
+                </li>
+                <!-- <div class="row">
+                    <a href="index.html">Home</a>
+                </div> -->
+            </ul>
+            <ul id="nav-mobile" class="sidenav">
+                <li>
+                    <a href="#">Navbar Link</a>
+                </li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="section no-pad-bot deep-orange accent-2" id="index-banner">
+    </div>
+    <!-- BODY -->
+    <div class="container orange lighten-5">
+        <div class="section orange lighten-5">
+            <!-- this is the form section -->
+            <form class="col s12">
+                <br>
+                <!-- user information from database -->
+                <div class="container">
+                    <div class="row" class="col s8">
+                        <div id="userinfo"></div>
+                    </div>
+                </div>
+                <!-- User information from database name, phone number, and address etc -->
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Addons</th>
+                                <th>Addon Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newitem">
+                            <!-- info from data base here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" class="col s12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Addons</th>
+                                <th>Addon Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productlist">
+                            <!-- info from data base here -->
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    </form>
+    <!-- submit button once everything is filled in -->
+    <br>
+    <br>
+    <footer class="page-footer deep-orange accent-3">
+        <div class="container">
+            <span class="grey-text text-lighten-4">© 2018 Food Spot Inc.</span>
+            <a class="grey-text text-lighten-4 center" href="/home"> Home Page</a>
+        </div>
+        </div>
+        </div>
+        </div>
+    </footer>
+    <!--  Scripts-->
+    <script src="javaScript/materialize.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript">
+        var userData = function (result) {
+            var userField = $("#userinfo");
+            //user data pulled from the data base
+            var name = $('<p> Name: ').text(data.name + '</p>');
+            var comapany = $('<p> Company: ').text(data.comapany + "</p>");
+            var taxId = $('<p> Tax ID: ').text(data.taxID + "</p>");
+            var location = $('<p> Location: ').text(data.location + "</p>");
+            var phone = $('<p> Phone #: ').text(data.phone + "</p>");
+            // pulling the info together and making to populate on the DOM
+            userField.append(name, comapany, taxId, phone, location);
+        };
+        // get the user info from the database
+        var getUserInfo = function () {
+            var queryURL = "api/user";
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                userData(response);
+            });
+        };
+        getUserInfo();
+        // this function allows the member to add items
+        var newStuff = function (results) {
+            var newItems = $("#newitems");
+            var tRow = $("<tr>");
+            var AddItem = $(
+                '<button class="btn" input="submit" type="submit" name="action" id="additem">ADD ITEM</button>'
+            );
+            //this will allow member to input the details so it can be stored in the database
+            var itemName = $('<td> <input="text" name="product />');
+            var price = $('<td> <input="text" name="price" />');
+            var addon = $('<td> <input="text" name="addon" />');
+            var addonPrice = $('<td> <input="text" name="addon_price" />');
+            //here we append the 
+            tRow.append(product, price, addon, addonPrice);
+            newItems.append(tRow, AddItem);
+            $("#additem").on('clikc', addProducts())
+        };
+        var addProducts = function () {
+            var queryURL = "api/trucks";
+            $.ajax({
+                url: queryURL,
+                method: "POST"
+            }).then(function (response) {
+                //add the product to the database
+            });
+        };
+        newStuff();
+        // this function creates a table of products form the data base and list them on the members page
+        var listProducts = function (data) {
+            // Get reference to existing tbody element, create a new table row element and buttons foe updating or deleting items
+            var products = $("#productlist");
+            var tRow = $("<tr>");
+            var update = $(
+                '<button class="btn" input="submit" type="submit" name="action" id="update">UPDATE</button>');
+            var remove = $(
+                '<button class="btn" input="submit" type="submit" name="action" id="delete">DELETE</button>');
+            // Methods run on jQuery selectors return the selector they we run on
+            // This is why we can create and save a reference to a td in the same statement we update its text
+            var itemName = $('<td> <input="text" name="product" />').text(data.product);
+            var price = $('<td> <input="text" name="price" />').text(data.price);
+            var addon = $('<td> <input="text" name="addon" />').text(data.addon);
+            var price = $('<td> <input="text" name="addon_price" />').text(data.addonPrice);
+            // Append the newly created table data to the table row
+            tRow.append(product, price, addon, addonPrice);
+            // Append the table row to the table body
+            products.append(tRow, update, remove);
+        };
+        var searchProducts = function () {
+            var queryURL = "api/trucks";
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                //
+                listProducts(response);
+            });
+        };
+        searchProducts();
+    </script>
+</body>
+</html>
