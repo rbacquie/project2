@@ -7,7 +7,7 @@ USE foodspotDB;
 
 CREATE TABLE users
 (
-	id int NOT NULL ,--AUTO_INCREMENT,
+	id int NOT NULL AUTO_INCREMENT,
     company_name varchar(155),
     name varchar(255),
     address_id varchar(125),
