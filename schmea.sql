@@ -35,5 +35,3 @@ CREATE TABLE items
 
 	PRIMARY KEY (id)
 );
-
-select * From users
